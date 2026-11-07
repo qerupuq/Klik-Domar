@@ -1,0 +1,419 @@
+@import "tailwindcss";
+
+@theme {
+  --color-chassis: var(--bg-color);
+  --color-panel: var(--panel-color);
+  --color-recessed: var(--recessed-color);
+  --color-main: var(--text-main);
+  --color-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    --bg-color: #e0e5ec;
+    --panel-color: #e0e5ec;
+    --recessed-color: #d1d9e6;
+    --text-main: #2d3436;
+    --text-muted: #4a5568;
+    --accent: #ff4757;
+    --accent-hover: #e03848;
+    --accent-fg: #ffffff;
+    --border-shadow: #babecc;
+    --border-light: #ffffff;
+    --border-dark: #a3b1c6;
+    --card-border: rgba(255, 255, 255, 0.4);
+
+    /* Industrial Neumorphic Shadows */
+    --shadow-card: 8px 8px 16px #babecc, -8px -8px 16px #ffffff;
+    --shadow-floating: 12px 12px 24px #babecc, -12px -12px 24px #ffffff, inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+    --shadow-pressed: inset 6px 6px 12px #babecc, inset -6px -6px 12px #ffffff;
+    --shadow-recessed: inset 4px 4px 8px #babecc, inset -4px -4px 8px #ffffff;
+    --shadow-sharp: 4px 4px 8px rgba(0, 0, 0, 0.15), -1px -1px 1px rgba(255, 255, 255, 0.8);
+    --shadow-glow: 0 0 10px 2px rgba(255, 71, 87, 0.6);
+    --shadow-glow-green: 0 0 10px 2px rgba(34, 197, 94, 0.7);
+
+    /* Dark Technical Panel (CRT / Screen Bezel) */
+    --tech-panel-bg: #2d3436;
+    --tech-screen-bg: #14181a;
+  }
+
+  /* 1. Midnight OLED / Obsidian Dark (Contras Tinggi, Ramah Mata) */
+  [data-theme="midnight"],
+  .dark {
+    --bg-color: #0b0f19;
+    --panel-color: #131b2e;
+    --recessed-color: #080c14;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent: #ff4757;
+    --accent-hover: #e03848;
+    --accent-fg: #ffffff;
+    --border-shadow: rgba(0, 0, 0, 0.8);
+    --border-light: rgba(255, 255, 255, 0.05);
+    --border-dark: #1e293b;
+    --card-border: rgba(255, 255, 255, 0.09);
+
+    --shadow-card: 8px 8px 18px rgba(0, 0, 0, 0.7), -4px -4px 12px rgba(30, 41, 59, 0.3);
+    --shadow-floating: 12px 12px 28px rgba(0, 0, 0, 0.85), -6px -6px 16px rgba(30, 41, 59, 0.35);
+    --shadow-pressed: inset 4px 4px 8px rgba(0, 0, 0, 0.85), inset -2px -2px 6px rgba(255, 255, 255, 0.05);
+    --shadow-recessed: inset 3px 3px 7px rgba(0, 0, 0, 0.85), inset -1px -1px 4px rgba(255, 255, 255, 0.04);
+    --shadow-sharp: 4px 4px 8px rgba(0, 0, 0, 0.6), -1px -1px 1px rgba(255, 255, 255, 0.08);
+
+    --tech-panel-bg: #070b12;
+    --tech-screen-bg: #05080e;
+  }
+
+  /* 2. Emerald Pine / Forest Night (Alami, Meredakan Mata Lelah) */
+  [data-theme="forest"] {
+    --bg-color: #071510;
+    --panel-color: #0e221b;
+    --recessed-color: #040e0b;
+    --text-main: #f0fdf4;
+    --text-muted: #86efac;
+    --accent: #10b981;
+    --accent-hover: #059669;
+    --accent-fg: #ffffff;
+    --border-shadow: rgba(0, 0, 0, 0.85);
+    --border-light: rgba(16, 185, 129, 0.08);
+    --border-dark: #134e4a;
+    --card-border: rgba(16, 185, 129, 0.16);
+
+    --shadow-card: 8px 8px 18px rgba(0, 0, 0, 0.75), -4px -4px 12px rgba(16, 185, 129, 0.12);
+    --shadow-floating: 12px 12px 28px rgba(0, 0, 0, 0.85), -6px -6px 16px rgba(16, 185, 129, 0.18);
+    --shadow-pressed: inset 4px 4px 8px rgba(0, 0, 0, 0.85), inset -2px -2px 6px rgba(16, 185, 129, 0.06);
+    --shadow-recessed: inset 3px 3px 7px rgba(0, 0, 0, 0.9), inset -1px -1px 4px rgba(16, 185, 129, 0.05);
+    --shadow-sharp: 4px 4px 8px rgba(0, 0, 0, 0.6), -1px -1px 1px rgba(16, 185, 129, 0.12);
+
+    --tech-panel-bg: #05100c;
+    --tech-screen-bg: #030a07;
+  }
+
+  /* 3. Mocha Espresso / Warm Charcoal (Hangat, Anti Radiasi Cahaya Biru) */
+  [data-theme="mocha"] {
+    --bg-color: #140e0b;
+    --panel-color: #1f1612;
+    --recessed-color: #0c0806;
+    --text-main: #fef3c7;
+    --text-muted: #d4a373;
+    --accent: #f59e0b;
+    --accent-hover: #d97706;
+    --accent-fg: #1c0f05;
+    --border-shadow: rgba(0, 0, 0, 0.85);
+    --border-light: rgba(245, 158, 11, 0.07);
+    --border-dark: #3e2723;
+    --card-border: rgba(245, 158, 11, 0.16);
+
+    --shadow-card: 8px 8px 18px rgba(0, 0, 0, 0.75), -4px -4px 12px rgba(45, 30, 20, 0.35);
+    --shadow-floating: 12px 12px 28px rgba(0, 0, 0, 0.85), -6px -6px 16px rgba(45, 30, 20, 0.45);
+    --shadow-pressed: inset 4px 4px 8px rgba(0, 0, 0, 0.85), inset -2px -2px 6px rgba(245, 158, 11, 0.06);
+    --shadow-recessed: inset 3px 3px 7px rgba(0, 0, 0, 0.9), inset -1px -1px 4px rgba(245, 158, 11, 0.05);
+    --shadow-sharp: 4px 4px 8px rgba(0, 0, 0, 0.6), -1px -1px 1px rgba(245, 158, 11, 0.12);
+
+    --tech-panel-bg: #0e0907;
+    --tech-screen-bg: #070403;
+  }
+
+  /* 4. Cobalt Ocean / Space Tech (Elegan, Fokus, Modern) */
+  [data-theme="cobalt"] {
+    --bg-color: #091122;
+    --panel-color: #101f3b;
+    --recessed-color: #050a14;
+    --text-main: #e0f2fe;
+    --text-muted: #7dd3fc;
+    --accent: #0ea5e9;
+    --accent-hover: #0284c7;
+    --accent-fg: #ffffff;
+    --border-shadow: rgba(0, 0, 0, 0.85);
+    --border-light: rgba(14, 165, 233, 0.09);
+    --border-dark: #1e3a5f;
+    --card-border: rgba(14, 165, 233, 0.18);
+
+    --shadow-card: 8px 8px 18px rgba(0, 0, 0, 0.75), -4px -4px 12px rgba(16, 31, 59, 0.4);
+    --shadow-floating: 12px 12px 28px rgba(0, 0, 0, 0.85), -6px -6px 16px rgba(16, 31, 59, 0.5);
+    --shadow-pressed: inset 4px 4px 8px rgba(0, 0, 0, 0.85), inset -2px -2px 6px rgba(14, 165, 233, 0.06);
+    --shadow-recessed: inset 3px 3px 7px rgba(0, 0, 0, 0.9), inset -1px -1px 4px rgba(14, 165, 233, 0.05);
+    --shadow-sharp: 4px 4px 8px rgba(0, 0, 0, 0.6), -1px -1px 1px rgba(14, 165, 233, 0.14);
+
+    --tech-panel-bg: #060c18;
+    --tech-screen-bg: #03060d;
+  }
+
+  /* 5. Amethyst Twilight / Mystic Plum (Lembut, Mewah, Menyejukkan) */
+  [data-theme="amethyst"] {
+    --bg-color: #110b1a;
+    --panel-color: #1c122a;
+    --recessed-color: #09050e;
+    --text-main: #f5f3ff;
+    --text-muted: #c4b5fd;
+    --accent: #a855f7;
+    --accent-hover: #9333ea;
+    --accent-fg: #ffffff;
+    --border-shadow: rgba(0, 0, 0, 0.85);
+    --border-light: rgba(168, 85, 247, 0.08);
+    --border-dark: #3b1d5a;
+    --card-border: rgba(168, 85, 247, 0.18);
+
+    --shadow-card: 8px 8px 18px rgba(0, 0, 0, 0.75), -4px -4px 12px rgba(35, 20, 55, 0.4);
+    --shadow-floating: 12px 12px 28px rgba(0, 0, 0, 0.85), -6px -6px 16px rgba(35, 20, 55, 0.5);
+    --shadow-pressed: inset 4px 4px 8px rgba(0, 0, 0, 0.85), inset -2px -2px 6px rgba(168, 85, 247, 0.06);
+    --shadow-recessed: inset 3px 3px 7px rgba(0, 0, 0, 0.9), inset -1px -1px 4px rgba(168, 85, 247, 0.05);
+    --shadow-sharp: 4px 4px 8px rgba(0, 0, 0, 0.6), -1px -1px 1px rgba(168, 85, 247, 0.12);
+
+    --tech-panel-bg: #0b0711;
+    --tech-screen-bg: #060309;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    transition: background-color 300ms ease, color 300ms ease;
+  }
+
+  /* GPU-promoted fixed background layer */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-color: var(--bg-color);
+    background-image: 
+      radial-gradient(circle at 15% 15%, var(--border-light) 0%, transparent 40%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+    transform: translateZ(0);
+    will-change: transform;
+    transition: background-color 300ms ease;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  /* Industrial Chassis & Panels */
+  .industrial-card {
+    background-color: var(--panel-color);
+    box-shadow: var(--shadow-card);
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+    transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .industrial-card:hover {
+    box-shadow: var(--shadow-floating);
+  }
+
+  .industrial-panel {
+    background-color: var(--panel-color);
+    box-shadow: var(--shadow-card);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+  }
+
+  /* Recessed Grooves & Input Wells */
+  .industrial-recessed {
+    background-color: var(--recessed-color);
+    box-shadow: var(--shadow-recessed);
+    border: 1px solid var(--card-border);
+  }
+
+  .industrial-pressed {
+    background-color: var(--recessed-color);
+    box-shadow: var(--shadow-pressed);
+  }
+
+  /* Physical Keys (Buttons) */
+  .btn-physical-primary {
+    background-color: var(--accent);
+    color: var(--accent-fg);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -2px -2px 6px rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    transition: all 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+  }
+
+  .btn-physical-primary:hover {
+    background-color: var(--accent-hover);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -3px -3px 8px rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-physical-primary:active {
+    transform: translateY(2px);
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.6);
+  }
+
+  .btn-physical-chassis {
+    background-color: var(--panel-color);
+    color: var(--text-main);
+    font-weight: 600;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    transition: all 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+  }
+
+  .btn-physical-chassis:hover {
+    color: var(--accent);
+    box-shadow: var(--shadow-floating);
+  }
+
+  .btn-physical-chassis:active {
+    transform: translateY(2px);
+    box-shadow: var(--shadow-pressed);
+  }
+
+  /* Legacy utility alias mapped to industrial skeuomorphic shadows */
+  .neu-flat {
+    background-color: var(--panel-color);
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--card-border);
+    transition: all 0.25s ease;
+  }
+
+  .neu-pressed {
+    background-color: var(--recessed-color);
+    box-shadow: var(--shadow-recessed);
+    border: 1px solid var(--card-border);
+    transition: all 0.2s ease;
+  }
+
+  .neu-convex {
+    background-color: var(--panel-color);
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--card-border);
+  }
+
+  /* Stamped Embossed Text */
+  .embossed-text {
+    text-shadow: 0 1px 0 var(--border-light);
+  }
+
+  .embossed-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-shadow: 0 1px 0 var(--border-light);
+  }
+
+  /* LED Status Indicators */
+  .led-active {
+    background-color: var(--accent);
+    box-shadow: 0 0 10px 2px var(--accent);
+  }
+
+  .led-green {
+    background-color: #22c55e;
+    box-shadow: 0 0 10px 2px rgba(34, 197, 94, 0.7);
+  }
+
+  .led-amber {
+    background-color: #f59e0b;
+    box-shadow: 0 0 10px 2px rgba(245, 158, 11, 0.65);
+  }
+
+  /* CRT Screen with Scanlines */
+  .crt-screen {
+    background-color: var(--tech-screen-bg);
+    background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
+    background-size: 100% 4px;
+    box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.8), inset -2px -2px 6px rgba(255, 255, 255, 0.05);
+    border: 3px solid var(--tech-panel-bg);
+  }
+
+  /* Blueprint Grid Background */
+  .blueprint-grid {
+    background-image: 
+      linear-gradient(var(--border-shadow) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border-shadow) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.5;
+  }
+
+  /* Corner Screws for Bolted Modules */
+  .bolted-panel {
+    position: relative;
+    background-color: var(--panel-color);
+    box-shadow: var(--shadow-card);
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+  }
+
+  .bolted-panel::before,
+  .bolted-panel::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--border-light), var(--border-shadow) 65%, var(--border-dark) 100%);
+    box-shadow: inset 0.5px 0.5px 1px var(--border-light), 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .bolted-panel::before {
+    top: 10px;
+    left: 10px;
+  }
+
+  .bolted-panel::after {
+    top: 10px;
+    right: 10px;
+  }
+
+  /* Vent Slots */
+  .vent-slot {
+    height: 18px;
+    width: 3px;
+    border-radius: 9999px;
+    background-color: var(--recessed-color);
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.4), inset -1px -1px 1px var(--border-light);
+  }
+}
+
+/* Industrial Scrollbars */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--recessed-color);
+  box-shadow: var(--shadow-recessed);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-shadow);
+  border-radius: 9999px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25), inset 1px 1px 1px var(--border-light);
+  border: 1px solid var(--panel-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}

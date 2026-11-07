@@ -1,0 +1,34 @@
+{
+  "entities": {
+    "receipt": {
+      "title": "Receipt",
+      "description": "Scanned receipt data with translated abbreviations.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The UID of the user who owns this receipt." },
+        "storeName": { "type": "string" },
+        "storeLocation": { "type": "string" },
+        "transactionDate": { "type": "string" },
+        "transactionTime": { "type": "string" },
+        "orderNumber": { "type": "string" },
+        "customerName": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "totalAmount": { "type": "number" },
+        "totalDiscount": { "type": "number" },
+        "netAmount": { "type": "number" },
+        "items": { "type": "array" },
+        "rawText": { "type": "string" },
+        "analyzedAt": { "type": "string" },
+        "savedAt": { "type": "object", "description": "Firestore server timestamp" },
+        "transactionTimestamp": { "type": "number" }
+      },
+      "required": ["userId", "storeName", "items", "analyzedAt", "savedAt"]
+    }
+  },
+  "firestore": {
+    "/receipts/{receiptId}": {
+      "schema": "receipt",
+      "description": "A collection of receipts scanned by users."
+    }
+  }
+}

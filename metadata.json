@@ -1,0 +1,10 @@
+{
+  "name": "Remix StrukPedia - Penerjemah Singkatan Struk",
+  "description": "Penerjemah singkatan struk belanja minimarket dan supermarket lengkap dengan deep research produk dan foto produk asli.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
